@@ -66,7 +66,7 @@ script "extract android" do
   interpreter "bash"
   cwd "/opt"
   code <<-EOH
-    tar -xfz /root/Downloads/android-sdk_r04-linux_86.tgz
+    tar -zxf /root/Downloads/android-sdk_r04-linux_86.tgz
   EOH
 end
 
