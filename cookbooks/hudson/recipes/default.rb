@@ -23,12 +23,18 @@ end
 
 package "monit"
 
+package "git-core"
+package "subversion"
+
 package "ruby1.8"
 package "ruby1.8-dev"
 package "libopenssl-ruby1.8"
 package "mysql-server"
 package "irb1.8"
 package "rake"
-
 package "libxml2-dev"
 package "libxslt1-dev"
+
+user "hudson" do
+  comment "Hudson User"
+end
