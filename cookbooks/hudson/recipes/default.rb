@@ -16,9 +16,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-package "sun-java6-jdk"
-package "openjdk-6-jdk" do
-  action :remove
+
+execute "update-java-alternatives" do
+  command "update-java-alternatives -s java-6-sun"
+  only_if do platform?("ubuntu", "debian") end
+  ignore_failure true
+  action :nothing
+end
+
+package "sun-java6-jdk" do
+  response_file "java.seed"
+  action :install
+  notifies :run, resources(:execute => "update-java-alternatives"), :immediately
 end
 
 package "monit"
