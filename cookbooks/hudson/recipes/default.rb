@@ -17,7 +17,18 @@
 # limitations under the License.
 #
 package "sun-java6-jdk"
+package "openjdk-6-jdk" do
+  action :remove
+end
+
+package "monit"
+
 package "ruby1.8"
 package "ruby1.8-dev"
+package "libopenssl-ruby1.8"
+package "mysql-server"
 package "irb1.8"
 package "rake"
+
+package "libxml2-dev"
+package "libxslt1-dev"
