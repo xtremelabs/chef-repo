@@ -47,3 +47,26 @@ package "libxslt1-dev"
 user "hudson" do
   comment "Hudson User"
 end
+
+user "xtremelabs" do
+  comment "XtremeLabs User"
+  home "/home/xtremelabs"
+end
+
+directory "/root/Downloads"
+
+remote_file "/root/Downloads/android-sdk_r04-linux_86.tgz" do
+  source "http://dl.google.com/android/android-sdk_r04-linux_86.tgz"
+  mode "0644"
+  checksum "61f356de22f8d2069f970b638dfd6a6e23edad13c093a7f20e9f4415e8563a2d"
+end
+
+script "extract android" do
+  not_if do File.exists?("/opt/android-sdk-linux_86") end
+  interpreter "bash"
+  directory "/opt"
+  code <<-EOH
+    tar -xfz /root/Downloads/android-sdk_r04-linux_86.tgz
+  EOH
+end
+
