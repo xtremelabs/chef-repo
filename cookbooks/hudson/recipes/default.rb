@@ -64,7 +64,7 @@ end
 script "extract android" do
   not_if do File.exists?("/opt/android-sdk-linux_86") end
   interpreter "bash"
-  directory "/opt"
+  cwd "/opt"
   code <<-EOH
     tar -xfz /root/Downloads/android-sdk_r04-linux_86.tgz
   EOH
